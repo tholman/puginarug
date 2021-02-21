@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      max-width: 100vw;
+      max-height: 100vh;
+    }
+
+    .timer {
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: monospace;
+      width: 500px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.5);
+      padding: 20px;
+      border-radius: 23px;
+    }
+  </style>
+</head>
+<body>
+  <canvas></canvas>
+  <div class="timer">You have been honoring the pug for <span class="seconds">0</span> seconds</div>
+  <script src="./index.js"></script>
+</body>
+</html>
