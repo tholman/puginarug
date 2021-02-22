@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
   <style>
     body, html {
@@ -17,11 +18,26 @@
       left: 50%;
       transform: translateX(-50%);
       font-family: monospace;
-      width: 500px;
+      width: 250px;
       text-align: center;
       background: rgba(255, 255, 255, 0.5);
       padding: 20px;
       border-radius: 23px;
+    }
+
+    @media  screen and  (min-width: 600px)  {
+      .timer {
+        width: 500px;
+      }
+    }
+
+    canvas {
+      /* Prevents the scrollbars from showing when using Firefox, Windows 10 */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
     }
   </style>
 </head>
