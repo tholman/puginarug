@@ -22,7 +22,11 @@
       text-align: center;
       background: rgba(255, 255, 255, 0.5);
       padding: 20px;
-      border-radius: 23px;
+      border-radius: 15px;
+    }
+
+    .timer span {
+      font-weight: bold;
     }
 
     @media  screen and  (min-width: 600px)  {
@@ -43,7 +47,8 @@
 </head>
 <body>
   <canvas></canvas>
-  <div class="timer">You have been honoring the pug for <span class="seconds">0</span> seconds</div>
+  <div class="timer">You have been honoring the pug for <span class="seconds">0</span> seconds<br/>
+    You are a <span class="grade">Assistant</span> of pug</div>
   <script src="./index.js"></script>
 </body>
 </html>
