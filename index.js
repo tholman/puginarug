@@ -36,7 +36,7 @@ const image = new Image();
 image.src = "./assets/pug.png"; // Photo credit to Matthew Henry (https://unsplash.com/photos/U5rMrSI7Pn4)
 
 const loopingPugs = 40; // 125 pugs required to cover a full 4K television screen. Tested via Firefox DevTools
-const offsetDistance = 100;
+const offsetDistance = 120;
 let currentOffset = 0;
 
 const movementRange = 200

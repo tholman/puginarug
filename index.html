@@ -20,9 +20,17 @@
       font-family: monospace;
       width: 250px;
       text-align: center;
-      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .inner {
+      background: rgba(255, 255, 255, 0.7);
       padding: 20px;
-      border-radius: 15px;
+    }
+
+    .frame {
+          border-image:  url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAYAAAAcaxDBAAACbElEQVR4Xu2bwZLCQAhE4/9/9O7FsnTU9HRoRlO+vTIQePQgptzLxl+UwCUajWAbQMMiAChAwwTC4VAoQMMEwuFQKEDDBMLhUChAwwTC4VAoQG0Cf4NHq4hag9ul9zgANMwVoL8OVClA2RU/5T/aVTxlL43BkvM1M7dg95lufAVM2d38HuKVnAH63BuAhpl0AFVXarSPOVRnohsvweBWUyLYagCqYQAdCK1uUEJUKPSuiR8H6irIvYLVGasAqfyV/+7IOeKsEqoCqfqrmlT+yh+g5owGqPl67usUOkpefTVUa063vRWgmk9HigNoeGUAKEDjL4g+utiXPkUPzKSlNyhRnBr6HXPb4QpQh9bEWYBOQHKOnA6o2ku/7cq35pOYoQANr00ABei599COseJ8KC29QYli1R6aeEYFIECT9F7EahVAQj2tCTbAbc03AXTplToAuBVg61J7Db60gAnAS/NBoVv2/10BegKgaqZ2NHHv5qsrHx2DK4pb+rbnwJoE0IkPovsjKNQEpo6fHqgqYMWYUZD3FFzKr+T8JmuAOu2cOAvQCUjOEYA6tA6sJWqsuA1Q59UaVPXfxaWKnWGtElTPcP3VeYCKrq3+BbRqCAodCFQV3g5UfXdXHXcLXB1vZuzdzqj5ZgW7HlaAqlcYoAMBgJoyRaEmMHdmuuGVgt0xpV4fKruVv5vcq+BKkVZC2/Mb9GrByl/ZrfwBum0AtSSjgX0dUFVfNGH1sE/bE1de1QBQRci0A9QEpo4DVBHC/p7Aihn6U/wBGm43QAEaJhAOh0IBGiYQDodCARomEA6HQgEaJhAOh0LDQP8B/zaYVZPdn1oAAAAASUVORK5CYII=") 28 /  28px / 0 round;
+          border-width:  28px;
+          border-style:  solid;
     }
 
     .timer span {
@@ -36,19 +44,63 @@
     }
 
     canvas {
-      /* Prevents the scrollbars from showing when using Firefox, Windows 10 */
       position: absolute;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
     }
+
+
+    @media (max-width: 700px) {
+      .sitter {
+        display: none;
+      }
+    }
+
+    .sitter {
+      position: fixed;
+      bottom: 15px;
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .watch {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 10px 15px;
+      border-radius: 22px;
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    .left {
+      left: 15px;
+    }
+
+    .yt {
+      color: #c4302b;
+    }
   </style>
 </head>
 <body>
   <canvas></canvas>
-  <div class="timer">You have been honoring the pug for <span class="seconds">0</span> seconds<br/>
-    You are a <span class="grade">Assistant</span> of pug</div>
+  <div class="timer frame">
+    <div class="inner">You have been honoring the pug for <span class="seconds">0</span> seconds<br/>
+    You are a <span class="grade">Assistant</span> of pug</div></div>
+
+    <div class="sitter left">
+      <div class="watch">
+      watch me making this:
+      <a
+        class="yt"
+        href="https://www.youtube.com/watch?v=Sj1vbbRA07g"
+        target="_blank"
+        >youtube</a
+      >
+      </div>
+    </div>
   <script src="./index.js"></script>
 </body>
 </html>
