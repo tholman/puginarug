@@ -17,7 +17,6 @@ const levels = {
   450: "Sage",
   650: "Hermit",
   1000: "Senior Hermit",
-  1500: "Senior Hermit",
   1500: "CEO",
   2500: "Pope",
   3500: "Underlord",
