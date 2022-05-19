@@ -6,6 +6,7 @@ const pugDimensions = { width: 353 * 1.2, height: 325 * 1.2 };
 
 
 const levels = {
+  0: "Assistant",
   5: "Sr Assistant",
   10: "Jr Honoror",
   15: "Master Honoror",
@@ -105,9 +106,16 @@ function loopDraw() {
 
   secondsCount.innerText = newTime;
 
-  if(levels[newTime]) {
-    level.innerText = levels[newTime]
-  }
+  const levelNumbers = Object.keys(levels);
+
+  //find the highest rank that is still below the current secondsCount
+  const currentRank = levelNumbers.reduce((highest, current) => {
+    if (newTime >= current && current > highest) {
+      return parseInt(current)
+    } else { return parseInt(highest) }
+  }, 0);
+
+  level.innerText = levels[currentRank];
 
   requestAnimationFrame(loopDraw);
 }
