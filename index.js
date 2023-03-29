@@ -27,6 +27,8 @@ const levels = {
 }
 
 const startTime = Date.now();
+let blurStart;
+let totalBlurredTime = 0;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -101,7 +103,7 @@ function loopDraw() {
     currentOffset = 0;
   }
 
-  const newTime = Math.floor((Date.now() - startTime) / 1000);
+  const newTime = Math.floor((Date.now() - startTime) / 1000) - totalBlurredTime;
 
   secondsCount.innerText = newTime;
 
@@ -111,6 +113,15 @@ function loopDraw() {
 
   requestAnimationFrame(loopDraw);
 }
+
+window.addEventListener('blur', (e) => {
+  blurStart = Date.now();
+})
+
+window.addEventListener('focus', (e) => {
+  let blurredTime = Math.floor((Date.now() - blurStart) / 1000);
+  totalBlurredTime += blurredTime;
+})
 
 function startLooping() {
   requestAnimationFrame(loopDraw);
