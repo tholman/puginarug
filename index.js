@@ -28,6 +28,7 @@ const positiveLevels = {
 }
 
 const negativeLevels = {
+  0: "Potential Assistant",
   5: "Minor Failer",
   10: "Amateur Failer",
   15: "Master Failer",
@@ -132,11 +133,19 @@ function loopDraw() {
 
 
   if (newTime > 0) { // if the time is positive, use the positiveLevels
-    console.log('positive')
-    if (positiveLevels[newTime]) {
-    level.innerText = positiveLevels[newTime];
-    }
-  } else { // the time is negative, so use the negativeLevels
+    const levelNumbers = Object.keys(positiveLevels);
+
+    // find the highest level that is less than the current time
+    const currentRank = levelNumbers.reduce((highest, current) => {
+      if (newTime >= current && current > highest) {
+        return parseInt(current)
+      } else { return parseInt(highest) }
+    }, 0);
+    
+    level.innerText = positiveLevels[currentRank];
+
+
+  } else if (newTime < 0) { // the time is negative, so use the negativeLevels
     const levelNumbers = Object.keys(negativeLevels);
 
     // find the highest level that is less than the current time
@@ -148,6 +157,8 @@ function loopDraw() {
     }, 0);
   
     level.innerText = negativeLevels[currentRank];
+  } else { // the time is 0, so use the default level
+    level.innerText = "Assistant";
   }
 
   requestAnimationFrame(loopDraw);
