@@ -5,7 +5,8 @@ const context = canvas.getContext("2d");
 const pugDimensions = { width: 353 * 1.2, height: 325 * 1.2 };
 
 
-const levels = {
+const positiveLevels = {
+  0: "Assistant",
   5: "Sr Assistant",
   10: "Jr Honoror",
   15: "Master Honoror",
@@ -26,7 +27,32 @@ const levels = {
   30500: "Anunnaki"
 }
 
+const negativeLevels = {
+  0: "Potential Assistant",
+  5: "Minor Failer",
+  10: "Amateur Failer",
+  15: "Master Failer",
+  35: "S Tier Failer",
+  65: "Junior Disgrace",
+  105: "Disgrace",
+  150: "Senior Disgrace",
+  250: "Rascal",
+  450: "Pariah",
+  650: "Outcast",
+  1000: "Senior Outcast",
+  1500: "Unemployed",
+  2500: "Beggar",
+  3500: "Criminal",
+  4500: "Wanted Criminal",
+  10500: "Exiled",
+  20500: "Junior Evil Mastermind",
+  30500: "Evil Mastermind",
+  40500: "Senior Partner in the Firm of Evil Mastermind & Sons, Inc.",
+}
+
 const startTime = Date.now();
+let blurStart;
+let totalBlurredTime = 0;
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -101,16 +127,53 @@ function loopDraw() {
     currentOffset = 0;
   }
 
-  const newTime = Math.floor((Date.now() - startTime) / 1000);
+  const newTime = Math.floor((Date.now() - startTime) / 1000) - totalBlurredTime;
 
   secondsCount.innerText = newTime;
 
-  if(levels[newTime]) {
-    level.innerText = levels[newTime]
+
+  if (newTime > 0) { // if the time is positive, use the positiveLevels
+    const levelNumbers = Object.keys(positiveLevels);
+
+    // find the highest level that is less than the current time
+    const currentRank = levelNumbers.reduce((highest, current) => {
+      if (newTime >= current && current > highest) {
+        return parseInt(current)
+      } else { return parseInt(highest) }
+    }, 0);
+    
+    level.innerText = positiveLevels[currentRank];
+
+
+  } else if (newTime < 0) { // the time is negative, so use the negativeLevels
+    const levelNumbers = Object.keys(negativeLevels);
+
+    // find the highest level that is less than the current time
+    const currentRank = levelNumbers.reduce((highest, current) => {
+      const numOfSeconds = Math.abs(newTime); // convert to positive number
+      if (numOfSeconds >= current && current > highest) {
+        return parseInt(current)
+      } else { return parseInt(highest) }
+    }, 0);
+  
+    level.innerText = negativeLevels[currentRank];
+  } else { // the time is 0, so use the default level
+    level.innerText = "Assistant";
   }
 
   requestAnimationFrame(loopDraw);
 }
+
+// on blur, record the time
+window.addEventListener('blur', (e) => {
+  blurStart = Date.now();
+})
+
+// on window focus, record the time spent blurred and add it to the totalBlurredTime
+window.addEventListener('focus', (e) => {
+  let blurredTime = Math.floor((Date.now() - blurStart) / 1000);
+  totalBlurredTime += blurredTime * 2; //this has to be doubled to counteract the time that passed while blurred
+})
 
 function startLooping() {
   requestAnimationFrame(loopDraw);
