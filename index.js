@@ -6,24 +6,24 @@ const pugDimensions = { width: 353 * 1.2, height: 325 * 1.2 };
 
 
 const levels = {
-  5: "Sr Assistant",
-  10: "Jr Honoror",
-  15: "Master Honoror",
-  35: "S Tier Honoror",
-  65: "Junior Acolyte",
-  105: "Acolyte",
-  150: "Senior Acolyte",
-  250: "Priest",
-  450: "Sage",
-  650: "Hermit",
-  1000: "Senior Hermit",
-  1500: "CEO",
-  2500: "Pope",
-  3500: "Underlord",
-  4500: "Lord",
-  10500: "OverLord",
-  20500: "King",
-  30500: "Anunnaki"
+  .1: "Sr Assistant",
+  .2: "Jr Honoror",
+  .3: "Master Honoror",
+  .4: "S Tier Honoror",
+  .5: "Junior Acolyte",
+  .6: "Acolyte",
+  .7: "Senior Acolyte",
+  5: "Priest",
+  10: "Sage",
+  15: "Hermit",
+  20: "Senior Hermit",
+  30: "CEO",
+  35: "Pope",
+  40: "Underlord",
+  45: "Lord",
+  55: "OverLord",
+  1: "King",
+  65: "Anunnaki"
 }
 
 const startTime = Date.now();
